@@ -18,10 +18,28 @@ export class PatientsService {
   public fetchPatients(): Observable<Patient[]> {
     return this.http.get<PatientsFetch>(this.URL).pipe(
         map((res: PatientsFetch) => {
-          return res.patient
+          return this.transform(res.patient)
         })
     )
   }
 
+  private transform(patients: Patient[]) {
+    let getFullYear = (patient) => {
+      let str = patient.age;
+      let arr = [...str];
+      let [ _, ...other] = arr.reverse();
+      return +(other.join(''));
+    };
+    let getBirthday = (patient, fullYear) => {
+      return (new Date()).getFullYear() - fullYear;
+    }
+    return patients.map(
+        patient => ({
+          ...patient,
+          fullYear:getFullYear(patient),
+          birthday:getBirthday(patient, getFullYear(patient))
+        })
+    )
+  }
 
 }

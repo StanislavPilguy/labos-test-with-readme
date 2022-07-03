@@ -41,7 +41,14 @@ import { PatientsEffects } from './patients/patients.effects'
 import { selectIsAuthenticated, selectAuth } from "./auth/auth.selectors";
 import { selectPatients } from './patients/patients.selectors';
 import { authLogin, authLogout } from "./auth/auth.actions";
-import { getPatients, getPatientsSuccess, getPatientsFail } from "./patients/patients.actions";
+import {
+  getPatients,
+  getPatientsSuccess,
+  getPatientsFail,
+  addPatientToFavorites,
+  removePatientFromFavorites,
+  sortPatients
+} from "./patients/patients.actions";
 import { AuthGuardService } from "./auth/auth-guard.service";
 import { TitleService } from "./title/title.service";
 import {
@@ -84,6 +91,9 @@ export {
   authLogin,
   authLogout,
   getPatients,
+  addPatientToFavorites,
+  removePatientFromFavorites,
+  sortPatients,
   getPatientsSuccess,
   getPatientsFail,
   routeAnimations,

@@ -57,4 +57,7 @@ export interface Patient {
   height?: string;
   followUpPatient?: any;
   isHospitalized?: boolean;
+  isFavorite?: boolean;
+  fullYear?: number;
+  birthday: number;
 }

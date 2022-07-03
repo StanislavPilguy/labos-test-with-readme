@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 
 import {ROUTE_ANIMATIONS_ELEMENTS} from "../../../core/core.module";
-import { getPatients, selectPatients } from '../../../core/core.module';
+import { getPatients, selectPatients, addPatientToFavorites, sortPatients } from '../../../core/core.module';
 import { Store } from '@ngrx/store'
 import {Patient} from "../../../shared/models/patient.model";
 import {Observable} from "rxjs";
@@ -28,7 +28,7 @@ export interface Patients {
 export class PatientsComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   public patients$: Observable<Patient[]>;
-  patients: Patient;
+  patient: Patient;
   displayedColumns: string[] = ['code', 'fullName', 'sex', 'age', 'phone', 'favorites'];
 
   public fullName = 'Full Name';
@@ -55,4 +55,11 @@ export class PatientsComponent implements OnInit {
     this.store.dispatch(getPatients())
   }
 
+  addToFavorite(patient: Patient) {
+    this.store.dispatch(addPatientToFavorites({patient}))
+  }
+
+  filterFavorite() {
+    this.store.dispatch(sortPatients())
+  }
 }

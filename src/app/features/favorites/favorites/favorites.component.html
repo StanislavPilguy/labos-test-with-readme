@@ -1,1 +1,49 @@
 <p>favorites works!</p>
+
+<ng-container *ngIf="patientsFavorites$ | async as patients; else empty">
+    <table>
+        <thead>
+        <tr>
+            <th>
+                code
+            </th>
+            <th>
+                Full Name
+            </th>
+            <th>
+                sex
+            </th>
+            <th>
+                age
+            </th>
+            <th>
+                ...
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let patient of patients">
+            <th>
+                {{ patient.code}}
+            </th>
+            <th>
+                {{ patient.fullName}}
+            </th>
+            <th>
+                {{ patient.sex.name}}
+            </th>
+            <th>
+                {{patient.age }}
+            </th>
+            <th>
+                <button (click)="removeFromFavorite(patient)">
+                    removeFromFavorite
+                </button>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</ng-container>
+<ng-template #empty>
+    empty
+</ng-template>

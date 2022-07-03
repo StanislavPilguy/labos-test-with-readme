@@ -6,3 +6,10 @@ table {
     font-size: 1em;
   }
 }
+table, tr, th {
+  border: 1px solid ;
+}
+
+tr.favorite {
+  background-color: aqua;
+}
