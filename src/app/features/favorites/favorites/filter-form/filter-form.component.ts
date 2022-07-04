@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {Store} from "@ngrx/store";
+
 import { searchPatients } from '../../../../core/core.module'
 
 @Component({

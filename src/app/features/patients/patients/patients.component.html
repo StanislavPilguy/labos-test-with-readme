@@ -5,32 +5,30 @@
       <a mat-raised-button class="actions-main" color="primary" (click)="getPatients($event)">
         {{ 'stms.patients.get-patients' | translate }}
       </a>
-
       <div  class="wrapper" *ngIf="patients$ | async as patients" >
-
         <table>
           <thead>
             <tr>
               <th>
-                №
+                {{'stms.patients.code' | translate }}
               </th>
               <th>
-                {{code}}
+                {{'stms.patients.fullName' | translate }}
               </th>
               <th>
-                {{fullName}}
+                {{'stms.patients.sex' | translate }}
               </th>
               <th>
-                {{sex}}
+                {{'stms.patients.age' | translate }}
               </th>
               <th>
-                {{age}}
+                {{'stms.patients.birthYear' | translate }}
               </th>
               <th>
-                {{phone}}
+                {{'stms.patients.phone' | translate }}
               </th>
               <th>
-               {{favorites}}
+                {{'stms.patients.favorites' | translate }}
               </th>
               <th>
                 <button (click)="filterFavorite()">
@@ -41,9 +39,6 @@
           </thead>
           <tbody>
           <tr *ngFor="let patient of patients; let i = index" [class.favorite]="patient.isFavorite">
-            <td>
-              {{ i + 1}}
-            </td>
             <td cellspacing = "0">
               {{ patient.code}}
             </td>
@@ -54,7 +49,10 @@
               {{ patient.sex.name}}
             </td>
             <td>
-              {{patient.age }}({{ patient.birthday}})
+              {{patient.age }}
+            </td>
+            <td>
+              {{ patient.birthday}}
             </td>
             <td>
               {{patient.address.phone1}}

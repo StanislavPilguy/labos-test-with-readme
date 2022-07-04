@@ -29,7 +29,20 @@
 
   "stms.patients.title": "Patients",
   "stms.patients.get-patients": "Get patients",
+  "stms.patients.favorites": "Favorites",
+  "stms.patients.code": "Code",
+  "stms.patients.fullName": "Full Name",
+  "stms.patients.sex": "Sex",
+  "stms.patients.age": "Age",
+  "stms.patients.phone": "Phone",
+  "stms.patients.birthYear": "Year of birth",
 
   "stms.orders.title": "Orders",
-  "stms.orders.get-orders": "Get orders"
+  "stms.orders.get-orders": "Get orders",
+
+  "stms.filterForm.filter": "filter",
+
+  "stms.favorites.code": "Code"
+
+
 }

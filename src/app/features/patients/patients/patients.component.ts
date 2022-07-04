@@ -13,9 +13,10 @@ export interface Patients {
   sex: string;
   age: number;
   address: {
-    phone1: string
+    phone1: string;
   }
-  favorites: string
+  favorites: string;
+  birthYear: string;
 }
 
 
@@ -29,13 +30,14 @@ export class PatientsComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   public patients$: Observable<Patient[]>;
   patient: Patient;
-  displayedColumns: string[] = ['code', 'fullName', 'sex', 'age', 'phone', 'favorites'];
+  displayedColumns: string[] = ['code', 'fullName', 'sex', 'age', 'birthYear', 'phone', 'favorites'];
   public fullName = 'Full Name';
   public age = 'Age';
   public sex = 'Sex';
   public phone = 'Phone';
   public code = 'Code';
   public favorites = 'Favorites';
+  public birthYear = 'Year of birth';
 
   constructor(
       private store: Store
@@ -47,7 +49,7 @@ export class PatientsComponent implements OnInit {
           return data.patients
         })
     )
-    //this.store.dispatch(getPatients())
+    this.store.dispatch(getPatients())
   }
 
   getPatients($event: MouseEvent) {

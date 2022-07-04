@@ -3,7 +3,7 @@
   "stms.title.short": "LabOS",
   
   "stms.menu.patients": "נבדקים",
-  "stms.menu.favorites  ": "אהוב",
+  "stms.menu.favorites": "מועדפים",
   "stms.menu.examples": "דוגמאות",
   "stms.menu.orders": "הזמנות",
   "stms.menu.login": "התחברות",
@@ -29,7 +29,19 @@
 
   "stms.patients.title": "נבדקים",
   "stms.patients.get-patients": "מצא נבדקים",
+  "stms.patients.favorites": "מועדפים",
+  "stms.patients.code": "קוד",
+  "stms.patients.fullName": "שם מלא",
+  "stms.patients.sex": "מין",
+  "stms.patients.age": "גיל",
+  "stms.patients.phone": "טלפון",
+  "stms.patient.fullName": "ג'יימס",
+  "stms.patients.birthYear": "שנת לידה",
 
   "stms.orders.title": "הזמנות",
-  "stms.orders.get-orders": "מצא הזמנות"
+  "stms.orders.get-orders": "מצא הזמנות",
+
+  "stms.filterForm.filter": "לְסַנֵן",
+
+  "stms.favorites.code": "קוד"
 }

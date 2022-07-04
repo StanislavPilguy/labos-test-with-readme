@@ -1,0 +1,44 @@
+table {
+  margin-top: .9em;
+  width: 100%;
+  box-shadow: 0 2px 8px #c5c5c5,
+  0 -2px 6px #ffffff;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  color:  #78808d;
+}
+
+table, tr, th {
+  padding: 1.1em;
+  font-weight: 900;
+  border: {
+    top: 1px solid #e0e0e0;
+    bottom: 1px solid #e0e0e0;
+  };
+  font-size: 1em;
+}
+
+tr, td {
+  padding: .7em 1.3em;
+}
+.btn {
+  padding: .3em 1em;
+  border: none;
+  background-color: #f80000;;
+  border-radius: 25%;
+  box-shadow:  5px 5px 10px #d1d1d1,
+  -5px -5px 10px #ffffff;
+  &:active {
+    box-shadow:  inset 1px 1px 5px #d1d1d1,
+    inset -1px -1px 5px #ffffff;
+  }
+}
+mat-icon {
+  margin-top: 4px;
+  cursor: pointer;
+  color: #fff;
+}
+mat-icon.click {
+  color: #fff;
+}
+

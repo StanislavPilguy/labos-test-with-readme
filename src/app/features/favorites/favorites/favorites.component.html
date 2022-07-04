@@ -1,25 +1,30 @@
-<p>favorites works!</p>
-
-<ng-container *ngIf="state$ | async as state">
-    <st-filter-form></st-filter-form>
-    <div *ngIf="state.filteredFavorites.length; else favoritesPatients">
-        <table>
+<div class="container">
+    <div rtl>
+        <h1 class="main-heading">{{ 'stms.patients.favorites' | translate }}</h1>
+        <div class="actions">
+            <ng-container *ngIf="state$ | async as state">
+            <st-filter-form></st-filter-form>
+            <div *ngIf="state.filteredFavorites.length; else favoritesPatients">
+                <table>
             <thead>
             <tr>
                 <th>
-                    code
+                    {{ 'stms.patients.code' | translate }}
                 </th>
                 <th>
-                    Full Name
+                    {{'stms.patients.fullName' | translate }}
                 </th>
                 <th>
-                    sex
+                    {{'stms.patients.sex' | translate }}
                 </th>
                 <th>
-                    age
+                    {{'stms.patients.age' | translate }}
                 </th>
                 <th>
-                    ...
+                    {{'stms.patients.phone' | translate }}
+                </th>
+                <th>
+                    {{'stms.patients.favorites' | translate }}
                 </th>
             </tr>
             </thead>
@@ -38,60 +43,87 @@
                     {{patient.age }}
                 </th>
                 <th>
-                    <button (click)="removeFromFavorite(patient)">
-                        removeFromFavorite
+                    {{phone}}
+                </th>
+                <th>
+                    <button class="btn"  (click)="removeFromFavorite(patient)">
+                        <mat-icon
+                                aria-hidden="false"
+                                aria-label="Example home icon"
+                                [class.click]="patient.isFavorite">
+                            delete
+                        </mat-icon>
                     </button>
                 </th>
             </tr>
             </tbody>
         </table>
+            </div>
+            <ng-template #favoritesPatients>
+                    <table class="container">
+                        <thead>
+                        <tr>
+                            <th>
+                                {{ 'stms.patients.code' | translate }}
+                            </th>
+                            <th>
+                                {{'stms.patients.fullName' | translate }}
+                            </th>
+                            <th>
+                                {{'stms.patients.sex' | translate }}
+                            </th>
+                            <th>
+                                {{'stms.patients.age' | translate }}
+                            </th>
+                            <th>
+                                {{'stms.patients.birthYear' | translate }}
+                            </th>
+                            <th>
+                                {{'stms.patients.phone' | translate }}
+                            </th>
+                            <th>
+                                {{'stms.patients.favorites' | translate }}
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let patient of state.patientsFavorites">
+                            <td cellspacing = "0">
+                                {{ patient.code}}
+                            </td>
+                            <td>
+                                {{ patient.fullName}}
+                            </td>
+                            <td>
+                                {{ patient.sex.name}}
+                            </td>
+                            <td>
+                                {{patient.age }}
+                            </td>
+                            <td>
+                                {{ patient.birthday}}
+                            </td>
+                            <td>
+                                {{patient.address.phone1}}
+                            </td>
+                            <td>
+                                <button class="btn" (click)="removeFromFavorite(patient)">
+                                    <mat-icon
+                                            aria-hidden="false"
+                                            aria-label="Example home icon"
+                                            [class.click]="patient.isFavorite">
+                                        delete
+                                    </mat-icon>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </ng-template>
+            </ng-container>
+            <ng-template #empty>
+                empty
+            </ng-template>
+        </div>
     </div>
-    <ng-template #favoritesPatients>
-        <table>
-            <thead>
-            <tr>
-                <th>
-                    code
-                </th>
-                <th>
-                    Full Name
-                </th>
-                <th>
-                    sex
-                </th>
-                <th>
-                    age
-                </th>
-                <th>
-                    ...
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let patient of state.patientsFavorites">
-                <th>
-                    {{ patient.code}}
-                </th>
-                <th>
-                    {{ patient.fullName}}
-                </th>
-                <th>
-                    {{ patient.sex.name}}
-                </th>
-                <th>
-                    {{patient.age }}
-                </th>
-                <th>
-                    <button (click)="removeFromFavorite(patient)">
-                        removeFromFavorite
-                    </button>
-                </th>
-            </tr>
-            </tbody>
-        </table>
-    </ng-template>
-
-</ng-container>
-<ng-template #empty>
-    empty
-</ng-template>
+</div>
