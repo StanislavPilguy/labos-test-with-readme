@@ -43,3 +43,16 @@ mat-icon {
 mat-icon.click {
   color: #f80000;
 }
+
+.btn-direction {
+  position: relative;
+  border-radius: 50%;
+  border: none;
+  background-color: #fff;
+  .mat-icon {
+    position: absolute;
+    cursor: pointer;
+    top: -20px;
+    left: -3px;
+  }
+}

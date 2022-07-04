@@ -20,6 +20,9 @@
               </th>
               <th>
                 {{'stms.patients.age' | translate }}
+                <button class="btn-direction" (click)="filterFavorite()">
+                  <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_drop_up</mat-icon>
+                </button>
               </th>
               <th>
                 {{'stms.patients.birthYear' | translate }}
@@ -31,9 +34,7 @@
                 {{'stms.patients.favorites' | translate }}
               </th>
               <th>
-                <button (click)="filterFavorite()">
-                  filter
-                </button>
+
               </th>
             </tr>
           </thead>
