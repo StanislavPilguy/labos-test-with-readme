@@ -49,7 +49,7 @@ export class PatientsComponent implements OnInit {
           return data.patients
         })
     )
-    this.store.dispatch(getPatients())
+    //this.store.dispatch(getPatients())
   }
 
   getPatients($event: MouseEvent) {
