@@ -47,7 +47,8 @@ import {
   getPatientsFail,
   addPatientToFavorites,
   removePatientFromFavorites,
-  sortPatients
+  sortPatients,
+  searchPatients,
 } from "./patients/patients.actions";
 import { AuthGuardService } from "./auth/auth-guard.service";
 import { TitleService } from "./title/title.service";
@@ -96,6 +97,7 @@ export {
   sortPatients,
   getPatientsSuccess,
   getPatientsFail,
+  searchPatients,
   routeAnimations,
   AppState,
   LocalStorageService,

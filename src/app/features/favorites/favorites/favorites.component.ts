@@ -1,9 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {Store} from "@ngrx/store";
+
 import {Observable} from "rxjs";
 import {Patient} from "../../../shared/models/patient.model";
-import {map} from "rxjs/operators";
 import { removePatientFromFavorites, selectPatients } from '../../../core/core.module';
+import {PatientsState} from "../../../core/patients/patients.reducer";
 
 @Component({
   selector: 'st-favorites',
@@ -12,19 +13,15 @@ import { removePatientFromFavorites, selectPatients } from '../../../core/core.m
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FavoritesComponent implements OnInit {
-  public patientsFavorites$: Observable<Patient[]>;
+  public state$: Observable<PatientsState>
+
   constructor(
-      private store: Store
+        private store: Store
   ) { }
 
   ngOnInit(): void {
-    this.patientsFavorites$ = this.store.select(selectPatients).pipe(
-        map((data) => {
-          return data.patientsFavorites
-        })
-    )
+    this.state$ = this.store.select(selectPatients)
   }
-
 
   removeFromFavorite(patient: Patient) {
     this.store.dispatch(removePatientFromFavorites({patient}))

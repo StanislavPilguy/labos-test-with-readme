@@ -24,13 +24,13 @@ export class PatientsService {
   }
 
   private transform(patients: Patient[]) {
-    let getFullYear = (patient) => {
-      let str = patient.age;
-      let arr = [...str];
-      let [ _, ...other] = arr.reverse();
-      return +(other.join(''));
+    const getFullYear = (patient) => {
+      const str = patient.age;
+        const arr = [...str];
+        const [ _, ...other] = arr.reverse();
+      return +(other.reverse().join(''));
     };
-    let getBirthday = (patient, fullYear) => {
+      const getBirthday = (patient, fullYear) => {
       return (new Date()).getFullYear() - fullYear;
     }
     return patients.map(
@@ -41,5 +41,4 @@ export class PatientsService {
         })
     )
   }
-
 }

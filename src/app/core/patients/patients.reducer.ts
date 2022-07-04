@@ -8,6 +8,7 @@ import {
   getPatientsFavoritesSuccess,
   getPatientsFavoritesFail,
   sortPatients,
+  searchPatients,
 } from './patients.actions';
 import { createReducer, on, Action } from '@ngrx/store';
 import {Patient} from "../../shared/models/patient.model";
@@ -15,11 +16,13 @@ import {Patient} from "../../shared/models/patient.model";
 export interface PatientsState {
   patients: Patient[],
   patientsFavorites: Patient[];
+  filteredFavorites: Patient[];
 }
 
 export const initialState: PatientsState = {
   patients: [],
-  patientsFavorites: []
+  patientsFavorites: [],
+  filteredFavorites: []
 };
 
 const reducer = createReducer(
@@ -71,6 +74,15 @@ const reducer = createReducer(
         ...state,
         patients: [...state.patients].sort((a, b) => b.birthday - a.birthday)
     })),
+
+    on(searchPatients, (state, { query }) => {
+        const list = [...state.patientsFavorites]
+        const filteredList = list.filter((p) => p.fullName.toLowerCase().includes(query.toLowerCase()) || p.code === +query)
+        return {
+            ...state,
+            filteredFavorites: filteredList
+        }
+    })
 );
 
 

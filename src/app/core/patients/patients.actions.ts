@@ -15,3 +15,6 @@ export const removePatientFromFavorites = createAction('[Patients] Remove Patien
 
 export const sortPatients = createAction('[Patients] Sort');
 
+export const searchPatients = createAction('[Patients] Search Patients', props<{ query: string }>());
+
+
