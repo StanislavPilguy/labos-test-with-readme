@@ -5,22 +5,28 @@
       <a mat-raised-button class="actions-main" color="primary" (click)="getPatients($event)">
         {{ 'stms.patients.get-patients' | translate }}
       </a>
-      <div  *ngIf="patients$ | async as patients" >
 
+      <div  class="wrapper" *ngIf="patients$ | async as patients" >
         <table>
           <thead>
             <tr>
               <th>
-                code
+                №
               </th>
               <th>
-                Full Name
+                {{code}}
               </th>
               <th>
-                sex
+                {{fullName}}
               </th>
               <th>
-                age
+                {{sex}}
+              </th>
+              <th>
+                {{age}}
+              </th>
+              <th>
+                {{phone}}
               </th>
               <th>
                 <button (click)="filterFavorite()">
@@ -31,66 +37,32 @@
           </thead>
           <tbody>
           <tr *ngFor="let patient of patients; let i = index" [class.favorite]="patient.isFavorite">
-            <th>
-              ({{ i + 1}}){{ patient.code}}
-            </th>
-            <th>
+            <td>
+              {{ i + 1}}
+            </td>
+            <td cellspacing = "0">
+              {{ patient.code}}
+            </td>
+            <td>
               {{ patient.fullName}}
-            </th>
-            <th>
+            </td>
+            <td>
               {{ patient.sex.name}}
-            </th>
-            <th>
+            </td>
+            <td>
               {{patient.age }}({{ patient.birthday}})
-            </th>
-            <th>
+            </td>
+            <td>
+              {{patient.address.phone1}}
+            </td>
+            <td>
               <button (click)="addToFavorite(patient)">
                 addToFavorite
               </button>
-            </th>
+            </td>
           </tr>
           </tbody>
         </table>
-
-<!--        <table mat-table [dataSource]="patients" class="mat-elevation-z8" *ngFor="let patient of patients">-->
-
-<!--          <ng-container matColumnDef="code">-->
-<!--            <th mat-header-cell *matHeaderCellDef> {{ code }} </th>-->
-<!--            <td mat-cell> {{patient.code}} </td>-->
-<!--          </ng-container>-->
-
-<!--          <ng-container matColumnDef="fullName">-->
-<!--            <th mat-header-cell *matHeaderCellDef>{{ fullName}}</th>-->
-<!--            <td mat-cell> {{patient.fullName}} </td>-->
-<!--          </ng-container>-->
-
-<!--          <ng-container matColumnDef="sex">-->
-<!--            <th mat-header-cell *matHeaderCellDef>{{ sex }}</th>-->
-<!--            <td mat-cell> {{patient.sex.name}} </td>-->
-<!--          </ng-container>-->
-
-<!--          <ng-container matColumnDef="age">-->
-<!--            <th mat-header-cell *matHeaderCellDef>{{age}}</th>-->
-<!--            <td mat-cell> {{patient.age}} </td>-->
-<!--          </ng-container>-->
-
-<!--          <ng-container matColumnDef="phone">-->
-<!--            <th mat-header-cell *matHeaderCellDef>{{phone}}</th>-->
-<!--            <td mat-cell> {{patient.address.phone1}}</td>-->
-<!--          </ng-container>-->
-
-<!--          <ng-container matColumnDef="favorites">-->
-<!--            <th mat-header-cell *matHeaderCellDef> {{favorites}} </th>-->
-<!--            <td mat-cell>-->
-<!--              <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon">-->
-<!--                <mat-icon (click)="addToFavorite(patient)">favorite</mat-icon>-->
-<!--              </button>-->
-<!--            </td>-->
-<!--          </ng-container>-->
-<!--          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
-<!--          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>-->
-<!--        </table>-->
-
       </div>
     </div>
   </div>
