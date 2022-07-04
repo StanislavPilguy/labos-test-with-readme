@@ -1,6 +1,3 @@
-.wrapper {
-  margin: 3.5em auto;
-}
 table {
   margin-top: .9em;
   width: 100%;
@@ -22,12 +19,12 @@ table, tr, th {
 }
 
 tr, td {
-  padding: .5em 1.3em;
+  padding: .7em 1.3em;
 }
 .btn {
   padding: .3em 1em;
   border: none;
-  background-color: #fff;
+  background-color: #f80000;;
   border-radius: 25%;
   box-shadow:  5px 5px 10px #d1d1d1,
   -5px -5px 10px #ffffff;
@@ -39,20 +36,9 @@ tr, td {
 mat-icon {
   margin-top: 4px;
   cursor: pointer;
+  color: #fff;
 }
 mat-icon.click {
-  color: #f80000;
+  color: #fff;
 }
 
-.btn-direction {
-  position: relative;
-  border-radius: 50%;
-  border: none;
-  background-color: #fff;
-  .mat-icon {
-    position: absolute;
-    cursor: pointer;
-    top: -20px;
-    left: -3px;
-  }
-}

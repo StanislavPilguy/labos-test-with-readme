@@ -37,8 +37,19 @@ import {
   selectRouterState
 } from "./core.state";
 import { AuthEffects } from "./auth/auth.effects";
+import { PatientsEffects } from './patients/patients.effects'
 import { selectIsAuthenticated, selectAuth } from "./auth/auth.selectors";
+import { selectPatients } from './patients/patients.selectors';
 import { authLogin, authLogout } from "./auth/auth.actions";
+import {
+  getPatients,
+  getPatientsSuccess,
+  getPatientsFail,
+  addPatientToFavorites,
+  removePatientFromFavorites,
+  sortPatients,
+  searchPatients,
+} from "./patients/patients.actions";
 import { AuthGuardService } from "./auth/auth-guard.service";
 import { TitleService } from "./title/title.service";
 import {
@@ -77,8 +88,16 @@ import {
 export {
   TitleService,
   selectAuth,
+  selectPatients,
   authLogin,
   authLogout,
+  getPatients,
+  addPatientToFavorites,
+  removePatientFromFavorites,
+  sortPatients,
+  getPatientsSuccess,
+  getPatientsFail,
+  searchPatients,
   routeAnimations,
   AppState,
   LocalStorageService,
@@ -90,7 +109,7 @@ export {
   NotificationService,
   selectEffectiveTheme,
   selectSettingsLanguage,
-  selectSettingsStickyHeader
+  selectSettingsStickyHeader,
 };
 
 export function httpLoaderFactory(http: HttpClient) {
@@ -122,7 +141,7 @@ export function httpLoaderFactory(http: HttpClient) {
     // ngrx
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([AuthEffects, SettingsEffects]),
+    EffectsModule.forRoot([AuthEffects, SettingsEffects, PatientsEffects]),
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({

@@ -2,12 +2,71 @@
   <div rtl>
     <h1 class="main-heading">{{ 'stms.patients.title' | translate }}</h1>
     <div class="actions">
-      <a mat-raised-button class="actions-main" color="primary">
+      <a mat-raised-button class="actions-main" color="primary" (click)="getPatients($event)">
         {{ 'stms.patients.get-patients' | translate }}
       </a>
-      <!--
-        Endpoint to fetch data: https://api.mocki.io/v2/51597ef3
-       -->
+      <div  class="wrapper" *ngIf="patients$ | async as patients" >
+        <table>
+          <thead>
+            <tr>
+              <th>
+                {{'stms.patients.code' | translate }}
+              </th>
+              <th>
+                {{'stms.patients.fullName' | translate }}
+              </th>
+              <th>
+                {{'stms.patients.sex' | translate }}
+              </th>
+              <th>
+                {{'stms.patients.age' | translate }}
+                <button class="btn-direction" (click)="filterFavorite()">
+                  <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_drop_up</mat-icon>
+                </button>
+              </th>
+              <th>
+                {{'stms.patients.birthYear' | translate }}
+              </th>
+              <th>
+                {{'stms.patients.phone' | translate }}
+              </th>
+              <th>
+                {{'stms.patients.favorites' | translate }}
+              </th>
+              <th>
+
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let patient of patients; let i = index" [class.favorite]="patient.isFavorite">
+            <td cellspacing = "0">
+              {{ patient.code}}
+            </td>
+            <td>
+              {{ patient.fullName}}
+            </td>
+            <td>
+              {{ patient.sex.name}}
+            </td>
+            <td>
+              {{patient.age }}
+            </td>
+            <td>
+              {{ patient.birthday}}
+            </td>
+            <td>
+              {{patient.address.phone1}}
+            </td>
+            <td>
+              <button class="btn" (click)="addToFavorite(patient)">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" [class.click]="patient.isFavorite">favorite</mat-icon>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
