@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
+import {Component, OnInit, ChangeDetectionStrategy} from "@angular/core";
 
 import {ROUTE_ANIMATIONS_ELEMENTS} from "../../../core/core.module";
 import { getPatients, selectPatients, addPatientToFavorites, sortPatients } from '../../../core/core.module';
@@ -30,7 +30,6 @@ export class PatientsComponent implements OnInit {
   public patients$: Observable<Patient[]>;
   patient: Patient;
   displayedColumns: string[] = ['code', 'fullName', 'sex', 'age', 'phone', 'favorites'];
-
   public fullName = 'Full Name';
   public age = 'Age';
   public sex = 'Sex';

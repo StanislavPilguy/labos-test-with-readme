@@ -29,6 +29,9 @@
                 {{phone}}
               </th>
               <th>
+               {{favorites}}
+              </th>
+              <th>
                 <button (click)="filterFavorite()">
                   filter
                 </button>
@@ -56,8 +59,8 @@
               {{patient.address.phone1}}
             </td>
             <td>
-              <button (click)="addToFavorite(patient)">
-                addToFavorite
+              <button class="btn" (click)="addToFavorite(patient)">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" [class.click]="patient.isFavorite">favorite</mat-icon>
               </button>
             </td>
           </tr>
